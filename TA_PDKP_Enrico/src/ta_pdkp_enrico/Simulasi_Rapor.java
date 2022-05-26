@@ -631,21 +631,6 @@ public class Simulasi_Rapor extends javax.swing.JFrame {
     }//GEN-LAST:event_majorCbxActionPerformed
 
     private void countButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countButtonActionPerformed
-        double absenValue = Double.parseDouble(absenTxt.getText()),
-               persenAbsen = Double.parseDouble(persenAbsenTxt.getText()),
-               totalAbsen = Double.parseDouble(totalAbsenTxt.getText()),
-               taskValue = Double.parseDouble(TaskTxt.getText()),
-               persenTask = Double.parseDouble(persentaskTxt.getText()),
-               utsValue = Double.parseDouble(UTStxt.getText()),
-               persenUTS = Double.parseDouble(persenutsTxt.getText()),
-               uasValue = Double.parseDouble(UAStxt.getText()),
-               persenUAS = Double.parseDouble(persenuasTxt.getText()),
-               regValue = Double.parseDouble(regTxt.getText()),
-               uasCbValue = Double.parseDouble(UTSCbTxt.getText()),
-               utsCbValue = Double.parseDouble(UASCbTxt.getText()),
-               costValue = Double.parseDouble(costTxt.getText()),
-               akhirValue, total ;
-        
         if (namaTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Nama belum diisi");
         }if (nimTxt.getText().isEmpty()){
@@ -674,10 +659,24 @@ public class Simulasi_Rapor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Persentase nilai UTS belum diisi");  
         }if (persenuasTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Persentase nilai UAS belum diisi");  
-        }if ((persenAbsen + persenTask + persenUAS + persenUTS) != 100){
+        }if (Float.valueOf(persenAbsenTxt.getText()) + Float.valueOf(persentaskTxt.getText()) + Float.valueOf(persenuasTxt.getText()) 
+                + Float.valueOf(persenutsTxt.getText()) != 100){
             JOptionPane.showMessageDialog(null,"Total Persentase tidak berjumlah 100 Persen");
         }
-        
+        double absenValue = Double.parseDouble(absenTxt.getText()),
+               totalAbsen = Double.parseDouble(totalAbsenTxt.getText()),
+               taskValue = Double.parseDouble(TaskTxt.getText()),
+               utsValue = Double.parseDouble(UTStxt.getText()),
+               uasValue = Double.parseDouble(UAStxt.getText()),
+               regValue = Double.parseDouble(regTxt.getText()),
+               uasCbValue = Double.parseDouble(UTSCbTxt.getText()),
+               utsCbValue = Double.parseDouble(UASCbTxt.getText()),
+               costValue = Double.parseDouble(costTxt.getText()),
+               persenTask = Double.parseDouble(persentaskTxt.getText()),
+               persenAbsen = Double.parseDouble(persenAbsenTxt.getText()),
+               persenUAS = Double.parseDouble(persenuasTxt.getText()),
+               persenUTS = Double.parseDouble(persenutsTxt.getText()),
+               akhirValue, total ;
         akhirValue = (((absenValue + (100-totalAbsen))* persenAbsen/100) + (taskValue * persenTask/100)
                         + (utsValue * persenUTS/100) + (uasValue * persenUAS/100));
         akhirTxt.setText("" + akhirValue);
@@ -750,11 +749,7 @@ public class Simulasi_Rapor extends javax.swing.JFrame {
     }//GEN-LAST:event_uasCbActionPerformed
 
     private void tableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableButtonActionPerformed
-        double persenTask = Double.parseDouble(persentaskTxt.getText()),
-               persenAbsen = Double.parseDouble(persenAbsenTxt.getText()),
-               persenUAS = Double.parseDouble(persenuasTxt.getText()),
-               persenUTS = Double.parseDouble(persenutsTxt.getText()) ;
-                
+          
         if (namaTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Nama belum diisi");
         }if (nimTxt.getText().isEmpty()){
@@ -783,12 +778,12 @@ public class Simulasi_Rapor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Persentase nilai UTS belum diisi");  
         }if (persenuasTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Persentase nilai UAS belum diisi");  
-        }if ((persenAbsen + persenTask + persenUAS + persenUTS) != 100){
+        }if (Float.valueOf(persenAbsenTxt.getText()) + Float.valueOf(persentaskTxt.getText()) + Float.valueOf(persenuasTxt.getText()) 
+                + Float.valueOf(persenutsTxt.getText()) != 100){
             JOptionPane.showMessageDialog(null,"Total Persentase tidak berjumlah 100 Persen");
-        }else if (akhirTxt.getText().isEmpty()){
+        }if (akhirTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Tekan tombol HITUNG terlebih dahulu !");
-        }
-        else {
+        }else {
             if (maleBtn.isSelected()){
             femaleBtn.setSelected(false);
              gender = "Laki - Laki";
@@ -808,13 +803,13 @@ public class Simulasi_Rapor extends javax.swing.JFrame {
                uasCbValue = Double.parseDouble(UTSCbTxt.getText()),
                utsCbValue = Double.parseDouble(UASCbTxt.getText()),
                costValue = Double.parseDouble(costTxt.getText()),
-               
+                    
                total ;
             total = (regValue + utsCbValue + uasCbValue + costValue);
             DataTable dataTabel = new DataTable(namaTxt.getText(), nimTxt.getText(),
                                    gender , major, kelasTxt.getText(), akhirTxt.getText(), gradeTxt.getText(), total);
             dataTabel.setVisible(true);
-          
+      
         }
     }//GEN-LAST:event_tableButtonActionPerformed
 
